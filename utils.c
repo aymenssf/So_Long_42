@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void    *ft_realloc(void *p, size_t new_size, size_t old_size)
+void *ft_realloc(void *p, size_t new_size, size_t old_size)
 {
         void    *new_p;
         if(p == NULL)

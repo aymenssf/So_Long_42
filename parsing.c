@@ -20,17 +20,32 @@ void    check_char(t_map *map, int i, int j)
                 printerror("Invalid map\n");
 }
 
+void    check_arg(int ac, char **av, t_map *map)
+{
+        int     i;
+        if(ac != 2)
+        {
+                print_error("Argument is invalid!\n");
+        }
+        i = ft_strlen(av[1]) - 1;
+        if(av[av[1][i]])
+        {}
+}
+
 void    validate_map(t_map *map, int i, int j)
 {
         if(map->player < 1 || map->exit < 1 || map->collect < 1)
         {
-                print_error("Map must contain at least one player, one exit and one collectible.\n");
+                print_error("Map must contain at least one player, \
+                one exit and one collectible.\n");
                 return;        
         }
         if(map->player > 1 || map->exit > 1 || map->collect > 1)
         {
-                print_error("Map must not contain duplicate player, one exit and one collectible.\n");
-                return;        
+                print_error("Map must not contain duplicate player, \
+                one exit and one collectible.\n");
+                return;
+        } 
         i = 0;
         j = 0;
         while(i < map->row)

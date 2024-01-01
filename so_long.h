@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
 # include <stdlib.h>
 # include <string.h>
@@ -36,4 +36,5 @@ void    *ft_realloc(void *p, size_t new_size, size_t old_size);
 int     print_error(char *s);
 char	*get_next_line(int fd);
 int	ft_printf(const char *s, ...);
+void    check_arg(int ac, char **av, t_map *map);
 #endif
