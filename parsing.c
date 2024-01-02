@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:30:40 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/02 15:12:15 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/02 21:17:58 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ void    check_char(t_map *map, int i, int j)
          && map->arr_map[i][j] != 'P')
                 print_error("Invalid map\n");
 }
-
+void    validate_map(t_map map, int fd)
+{
+        
+}
 void    check_arg(int ac, char **av)
 {
         int     i;
