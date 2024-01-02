@@ -1,14 +1,20 @@
 NAME	= so_long.a
 CFLAGS  = -Wall -Werror -Wextra
 CC	= cc
-SRC	= 
+SRC	= parsing.c main.c
 
 OBJ 	= $(SRC:.c=.o)
+INCLUDES = -I/opt/X11/include -Imlx
 
 all:	$(NAME)
 
-$(NAME):	$(OBJ)
-	ar -rc $(NAME) $(OBJ)
+.c.o:
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+
+MLX_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
+
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS) -o $(NAME)
 
 clean:
 	rm -f $(OBJ)
