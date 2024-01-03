@@ -26,10 +26,11 @@ void read_map(char *av, t_map map)
         }
 }
 
-void    validate_and_init_game(char *mymap, t_map map, int i)
-{
-
-}
+// void    validate_and_init_game(char *mymap, t_map *map, int i)
+// {
+//         validate_map(map);
+//         check_char(map)
+// }
 
 int main(void)
 {

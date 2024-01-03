@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:30:40 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/02 21:17:58 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/03 21:28:33 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void    check_char(t_map *map, int i, int j)
          && map->arr_map[i][j] != 'P')
                 print_error("Invalid map\n");
 }
-void    validate_map(t_map map, int fd)
-{
-        
-}
+// void    validate_map(t_map map, int fd)
+// {
+
+// }
 void    check_arg(int ac, char **av)
 {
         int     i;
@@ -45,15 +45,15 @@ void    validate_map(t_map *map)
                 one exit and one collectible.\n");
                 return;
         }
-        if(map->player > 1 || map->exit > 1 || map->collect->count > 1)
+        if(map->player > 1 || map->exit > 1)
         {
                 print_error("Map must not contain duplicate player, \
-                one exit and one collectible.\n");
+                duplicate exit\n");
                 return;
         }
         ft_printf("Map is valid !\n");
 }
-
+//check if the map is surrounded with walls
 int parse_wall(t_map *map, int i, int j)
 {
         i = 0;

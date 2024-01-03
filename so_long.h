@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:42:08 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/02 16:08:05 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/03 22:19:15 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@
 # include "libft/libft.h"
 # include "gnl/get_next_line.h"
 # include <mlx.h>
-typedef	struct s_collect
-{
-	int count;
-}	t_collect;
 
 typedef struct s_player
 {
@@ -33,13 +29,24 @@ typedef struct s_player
 
 }	t_player;
 
+typedef struct s_image
+{
+	void *img;
+	int img_x;
+	int img_y;
+	int count;
+}	t_image;
+
+
 typedef struct s_map
 {
-	int player;
-	t_collect *collect;
-	int wall;
-	int empty;
-	int exit;
+	void *mlx;
+	void *win;
+	t_image *player;
+	t_image *collect;
+	t_image *wall;
+	t_image *empty;
+	t_image *exit;
 	int row;
 	int col;
 	char **arr_map;
@@ -52,7 +59,9 @@ int parse_wall(t_map *map, int i, int j);
 void    *ft_realloc(void *p, size_t new_size, size_t old_size);
 int     print_error(char *s);
 char	*get_next_line(int fd);
-int	ft_printf(const char *s, ...);
 void    check_arg(int ac, char **av);
+void init_struct(t_map *map);
+
+// void    validate_and_init_game(char *mymap, t_map map, int i);
 // void    check_arg(int ac, char **av, t_map *map);
 #endif
