@@ -12,19 +12,63 @@
 
 #include "so_long.h"
 
-void read_map(char *av, t_map map)
+void read_map(int ac, char **av, t_map *map, int j)
 {
-        int fd;
-        char *buffer;
-        fd = open("map.ber", O_RDONLY);
-        buffer = get_next_line(fd);
-        while(buffer)
-        {
-                ft_printf("%s\n", buffer);
-                free(buffer);
-                buffer = get_next_line(fd);
-        }
+    int i;
+    char **buffer;
+    buffer = NULL;
+    check_arg(ac, av);
+    i = 0;
+    map->row = 0;
+    map->col = 0;
+    map->fd = open(av[1], O_RDONLY);
+    if(map->fd == -1)
+        print_error("INDICATES LATER");
+	count_line(map);
+	map->arr_map = malloc(sizeof(char *) * (map->row));
+	close(map->fd);
+    map->fd = open(av[1], O_RDONLY);
+	while(i < map->row)
+		map->arr_map[i++] = get_next_line(map->fd);
+	get_next_line(map->fd);
+	close(map->fd);
+	validatw_wall(map);
+	parse_collect(map);
+	parse_exit_player(map);
+
 }
+
+
+
+
+
+/* void	open_file(int argc, char *argv[], t_map *map)
+{
+	int		i;
+	char	**tmp;
+
+	tmp = NULL;
+	check_arg(argc, argv, map);
+	i = 0;
+	map->line = 0;
+	map->len = 0;
+	map->fd = open(argv[1], O_RDONLY);
+	if (map->fd == -1)
+		ft_error(map, 3);
+	line_counter(map);
+	map->tab = malloc(sizeof(char *) * (map->line));
+	close(map->fd);
+	map->fd = open(argv[1], O_RDONLY);
+	while (i < map->line)
+		map->tab[i++] = get_next_line(map->fd);
+	get_next_line(map->fd);
+	close(map->fd);
+	parse_door_player(map);
+	parse_wall(map);
+	parse_item(map);
+	tmp = duplicate_map(map);
+	check_start(tmp, map);
+} */
 
 // void    validate_and_init_game(char *mymap, t_map *map, int i)
 // {
