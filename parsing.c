@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:30:40 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/03 21:28:33 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/04 18:51:35 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,36 @@ void    validate_map(t_map *map)
                 duplicate exit\n");
                 return;
         }
-        ft_printf("Map is valid !\n");
+        printf("Map is valid !\n");
 }
+
+// int parse_wall(t_map *map, int i, int j)
+// {
+//         i = 0;
+//         while(i < map->col)
+//         {
+//                 if(map->arr_map[0][i] != 1 || map->arr_map[map->row - 1][i] != 1)
+//                         print_error("Map must be surrounded by walls.\n");
+//                 i++;
+//         }
+//         i = 1;
+//         while(i < map->row)
+//         {
+//                 if()
+//         }
+//         return (0);
+// }
+
 //check if the map is surrounded with walls
-int parse_wall(t_map *map, int i, int j)
+int validate_wall(t_map *map)
 {
+        int     i;
+        int     j;
+
         i = 0;
+        j = 0;
+        if (map->col != (int)ft_strlen(map->arr_map[i]))
+                print_error("Map must be surrounded by walls.\n");
         while(i < map->row)
         {
                 while(j < map->col)
@@ -77,12 +101,30 @@ int parse_wall(t_map *map, int i, int j)
         return (0);
 }
 
-// int     player_parse_wall(t_map *map)
-// {
-
-// }
-void     parse_collect(t_map *map, int i, int j)
+int     parse_exit_player(t_map *map)
 {
+        int     i;
+        int     j;
+
+        i = 0;
+
+        while(i < map->row)
+        {
+                j = 0;
+                check_char(map, i, j);
+                if(map->arr_map[i][j] == 'E')
+                        map->exit->count += 1;
+                else if(map->arr_map[i][j] == 'P')
+                        map->player->count += 1;
+        }
+        if(map->exit->count != 1 || map->player->count != 1 )
+                print_error("Player or exit are more than 1");
+}
+void     parse_collect(t_map *map)
+{
+        int     i;
+        int     j;
+
         i = 0;
         while(i < map->row)
         {
