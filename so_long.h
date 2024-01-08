@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:42:08 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/04 18:56:43 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/08 18:43:52 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void    *ft_realloc(void *p, size_t new_size, size_t old_size);
 void	read_map(int ac, char **av, t_map *map, int j);
 int     print_error(char *s);
 char	*get_next_line(int fd);
+char	**duplicate_map(t_map *map);
 void    check_arg(int ac, char **av);
 void init_struct(t_map *map);
 char	**duplicate_map(t_map *map);
