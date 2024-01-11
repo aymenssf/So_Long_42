@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:42:08 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/08 18:43:52 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/11 22:21:31 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,10 @@ char	**duplicate_map(t_map *map);
 void    check_arg(int ac, char **av);
 void init_struct(t_map *map);
 char	**duplicate_map(t_map *map);
+void    parse_road(char **tmp, int i, int j);
 int     parse_exit_player(t_map *map);
-
+void flood_fill(t_map *map, int x, int y, char target, char replacement);
+void	ft_flood_fill(char **tmp, t_map *map);
 // void    validate_and_init_game(char *mymap, t_map map, int i);
 // void    check_arg(int ac, char **av, t_map *map);
 #endif

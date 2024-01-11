@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 18:55:57 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/08 18:43:43 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/11 22:21:36 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,22 @@ char	**duplicate_map(t_map *map)
                 i++;
         }
         return(tmp);
+}
+
+void	ft_flood_fill(char **tmp, t_map *map)
+{
+        
+}
+
+void flood_fill(t_map *map, int x, int y, char curr_pos, char replace)
+{
+        if(x < 0 || x >= map->row || y < 0 || y >= map->col)
+                return;
+        if(map->arr_map[x][y] != curr_pos)
+                return;
+        map->arr_map[x][y] = replace;
+        flood_fill(map, x + 1, y, curr_pos, replace);
+        flood_fill(map, x - 1, y, curr_pos, replace);
+        flood_fill(map, x, y + 1, curr_pos, replace);
+        flood_fill(map, x, y - 1, curr_pos, replace);
 }
