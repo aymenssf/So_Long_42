@@ -6,18 +6,19 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:41:05 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/04 12:38:05 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/12 11:51:11 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void *ft_realloc(void *p, size_t new_size, size_t old_size)
+/* void *ft_realloc(void *p, size_t new_size, size_t old_size)
 {
         void    *new_p;
+        new_p = NULL;
         if(p == NULL)
                 return (malloc(new_size));
-        else if(new_size = 0)
+        else if(new_size == 0)
         {
                 free(p);
                 return (NULL);
@@ -29,7 +30,7 @@ void *ft_realloc(void *p, size_t new_size, size_t old_size)
         ft_memcpy(new_p, p, old_size);
         free(p);
         return (new_p);
-}
+} */
 
 void    count_line(t_map *map)
 {
@@ -49,9 +50,22 @@ void    count_line(t_map *map)
         }
 }
 
+void free_tmp(char **tmp, t_map *map)
+{
+        int i;
+
+        i = 0;
+        while(i < map->row)
+        {
+                free(tmp[i]);
+                i++;
+        }
+        free(tmp);
+}
+
 int     print_error(char *s)
 {
-        ft_printf("Error\n");
-        ft_printf("%s", s);
+        printf("Error\n");
+        printf("%s", s);
         exit(0);
 }

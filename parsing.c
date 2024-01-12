@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:30:40 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/04 18:51:35 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/12 17:44:41 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,29 +23,29 @@ void    check_char(t_map *map, int i, int j)
 // {
 
 // }
-void    check_arg(int ac, char **av)
+void    check_arg(int argc, char **argv)
 {
         int     i;
-        if(ac != 2)
+        if(argc != 2)
         {
                 print_error("Argument is invalid!\n");
                 return;
         }
-        i = ft_strlen(av[1]) - 1;
-        if((av[1][i] != 'r') ||( av[1][i - 1] != 'e') || (av[1][i - 2] != 'b')
-        || av[1][i - 3] != '.' || ft_strlen(av[1]) < 5)
+        i = ft_strlen(argv[1]) - 1;
+        if((argv[1][i] != 'r') ||( argv[1][i - 1] != 'e') || (argv[1][i - 2] != 'b')
+        || argv[1][i - 3] != '.' || ft_strlen(argv[1]) < 5)
                 print_error("Invalid map\n");
 }
 
 void    validate_map(t_map *map)
 {
-        if(map->player < 1 || map->exit < 1 || map->collect->count < 1)
+        if(map->player->count < 1 || map->exit->count < 1 || map->collect->count < 1)
         {
                 print_error("Map must contain at least one player, \
                 one exit and one collectible.\n");
                 return;
         }
-        if(map->player > 1 || map->exit > 1)
+        if(map->player->count > 1 || map->exit->count > 1)
         {
                 print_error("Map must not contain duplicate player, \
                 duplicate exit\n");
@@ -119,7 +119,9 @@ int     parse_exit_player(t_map *map)
         }
         if(map->exit->count != 1 || map->player->count != 1 )
                 print_error("Player or exit are more than 1");
+        return (0);
 }
+
 void     parse_collect(t_map *map)
 {
         int     i;
@@ -139,4 +141,3 @@ void     parse_collect(t_map *map)
                         print_error("Collectibles are less than 1");
         }
 }
-

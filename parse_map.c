@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 18:55:57 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/11 22:21:36 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/12 11:04:29 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,61 @@ char	**duplicate_map(t_map *map)
         return(tmp);
 }
 
+void free_map_and_road(char **tmp, t_map *map, int x, int y)
+{
+        int i;
+
+        if(tmp[x][y] == 'E' || tmp[x][y] == 'C')
+        {
+                free_tmp(tmp, map);
+                i = 0;
+                if(i < map->row)
+                {
+                        free(map->arr_map[i]);
+                        i++;
+                }
+                free(map->arr_map);
+                print_error("No path available to exit or items");
+        }
+}
+
+void	check_start(char **tmp, t_map *map)
+{
+       int      x;
+       int      y;
+
+       x = 0;
+       ft_flood_fill(tmp, map);
+       while(x < map->row)
+       {
+                y = 0;
+                while(y < map->col)
+                {
+                        free_map_and_road(tmp, map, x, y);
+                        y++;
+                }
+                x++;
+       }
+       free_tmp(tmp, map);
+}
+
 void	ft_flood_fill(char **tmp, t_map *map)
 {
-        
+       int      x;
+       int      y;
+
+       x = 0;
+       while(x < map->row)
+       {
+                y = 0;
+                while(y < map->col)
+                {
+                        if(tmp[x][y] == 'P')
+                                flood_fill(map, x, y, '0', 'F');
+                        y++;
+                }
+                x++;
+       }
 }
 
 void flood_fill(t_map *map, int x, int y, char curr_pos, char replace)

@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 21:55:19 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/03 22:22:28 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/12 11:52:03 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void init_struct(t_map *map)
 void	init_map(t_map *map)
 {
 	map->mlx = mlx_init();
-	if(map->mlx = NULL)
+	if(map->mlx == NULL)
 		exit(0);
 	map->win = mlx_new_window(map->mlx, (map->row) * PIXEL, (map->col) * PIXEL, "SO_LONG");
 	if(map->win == NULL)

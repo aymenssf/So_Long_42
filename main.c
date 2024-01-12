@@ -12,63 +12,39 @@
 
 #include "so_long.h"
 
-void read_map(int ac, char **av, t_map *map, int j)
+void fd_error(t_map *map)
+{
+        if(map->fd == -1)
+                print_error("Invalid map");
+}
+
+void read_map(int argc, char **argv, t_map *map)
 {
     int i;
+	// int j;
     char **buffer;
     buffer = NULL;
-    check_arg(ac, av);
+    check_arg(argc, argv);
     i = 0;
     map->row = 0;
     map->col = 0;
-    map->fd = open(av[1], O_RDONLY);
-    if(map->fd == -1)
-        print_error("INDICATES LATER");
+    map->fd = open(argv[1], O_RDONLY);
+	fd_error(map);
 	count_line(map);
 	map->arr_map = malloc(sizeof(char *) * (map->row));
 	close(map->fd);
-    map->fd = open(av[1], O_RDONLY);
+    map->fd = open(argv[1], O_RDONLY);
+	fd_error(map);
 	while(i < map->row)
 		map->arr_map[i++] = get_next_line(map->fd);
 	get_next_line(map->fd);
 	close(map->fd);
-	validatw_wall(map);
+	validate_wall(map);
 	parse_collect(map);
 	parse_exit_player(map);
-
+	buffer = duplicate_map(map);
+	check_start(buffer, map);
 }
-
-
-
-
-
-/* void	open_file(int argc, char *argv[], t_map *map)
-{
-	int		i;
-	char	**tmp;
-
-	tmp = NULL;
-	check_arg(argc, argv, map);
-	i = 0;
-	map->line = 0;
-	map->len = 0;
-	map->fd = open(argv[1], O_RDONLY);
-	if (map->fd == -1)
-		ft_error(map, 3);
-	line_counter(map);
-	map->tab = malloc(sizeof(char *) * (map->line));
-	close(map->fd);
-	map->fd = open(argv[1], O_RDONLY);
-	while (i < map->line)
-		map->tab[i++] = get_next_line(map->fd);
-	get_next_line(map->fd);
-	close(map->fd);
-	parse_door_player(map);
-	parse_wall(map);
-	parse_item(map);
-	tmp = duplicate_map(map);
-	check_start(tmp, map);
-} */
 
 // void    validate_and_init_game(char *mymap, t_map *map, int i)
 // {
@@ -76,14 +52,38 @@ void read_map(int ac, char **av, t_map *map, int j)
 //         check_char(map)
 // }
 
-int main(void)
+int main(int argc, char **argv)
 {
-	void	*mlx;
-	void	*mlx_win;
-	void	*img;
+	// void	*mlx;
+	// void	*mlx_win;
+	// void	*img;
+	t_map	*map;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "first window!");
-	img = mlx_new_image(mlx, 1920, 1080);
-	mlx_loop(mlx);
+	map = malloc(sizeof(t_map));
+	if(!map)
+		return(0);
+	init_struct(map);
+	read_map(argc, argv, map);
+	init_map(map);
+	// mlx_win = mlx_new_window(mlx, 1920, 1080, "first window!");
+	// img = mlx_new_image(mlx, 1920, 1080);
+	// mlx_loop(mlx);
 }
+
+// int	main(int argc, char*argv[])
+// {
+// 	t_map	*map;
+
+// 	map = malloc(sizeof(t_map));
+// 	if (!map)
+// 		return (0);
+// 	init_struct(map);
+// 	open_file(argc, argv, map);
+// 	init_map(map);
+// 	display_image(map);
+// 	mlx_hook(map->win, KeyPress, KeyPressMask, &handle_key, map);
+// 	mlx_hook(map->win, 17, 1L << 0, *ft_close, map);
+// 	mlx_loop(map->mlx);
+// 	ft_close(map);
+// 	return (0);
+// }
