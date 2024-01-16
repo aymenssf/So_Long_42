@@ -39,6 +39,8 @@ void read_map(int argc, char **argv, t_map *map)
 		map->arr_map[i++] = get_next_line(map->fd);
 	get_next_line(map->fd);
 	close(map->fd);
+	printf("%d\n", map->row);
+	printf("%d", map->col);
 	validate_wall(map);
 	parse_collect(map);
 	parse_exit_player(map);
