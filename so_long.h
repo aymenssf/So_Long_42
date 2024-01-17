@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:42:08 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/12 17:48:48 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/17 14:44:13 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void    validate_map(t_map *map);
 int validate_wall(t_map *map);
 void    *ft_realloc(void *p, size_t new_size, size_t old_size);
 void	read_map(int argc, char **argv, t_map *map);
+void read_map_helper(t_map *map, int line_number);
 int     print_error(char *s);
 char	*get_next_line(int fd);
 char	**duplicate_map(t_map *map);
@@ -70,13 +71,14 @@ void    parse_road(char **tmp, int i, int j);
 int     parse_exit_player(t_map *map);
 void     parse_collect(t_map *map);
 void	init_map(t_map *map);
-void flood_fill(t_map *map, int x, int y, char target, char replargcement);
+void flood_fill(char **tmp, t_map *map, int x, int y, char curr_pos, char replace);
 void	ft_flood_fill(char **tmp, t_map *map);
 void	check_start(char **tmp, t_map *map);
 void free_map_and_road(char **tmp, t_map *map, int x, int y);
 void    count_line(t_map *map);
 void	free_tmp(char **tmp, t_map *map);
 void fd_error(t_map *map);
+void print_map(char **map, int rows, int cols);
 // void    validate_and_init_game(char *mymap, t_map map, int i);
 // void    check_arg(int argc, char **argv, t_map *map);
 #endif

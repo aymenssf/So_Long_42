@@ -18,6 +18,30 @@ void fd_error(t_map *map)
                 print_error("Invalid map");
 }
 
+void read_map_helper(t_map *map, int line_number) {
+    char *line;
+	line = get_next_line(map->fd);
+    if (!line) {
+        print_error("Unexpected end of file or read error.");
+    }
+    size_t len;
+	len = ft_strlen(line);
+    if (len > 0 && line[len - 1] == '\n') {
+        line[len - 1] = '\0';
+    }
+    map->arr_map[line_number] = line;
+}
+void print_map(char **map, int rows, int cols)
+{
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            printf("%c", map[i][j]);
+        }
+        printf("\n");
+    }
+}
 void read_map(int argc, char **argv, t_map *map)
 {
     int i;
@@ -39,13 +63,17 @@ void read_map(int argc, char **argv, t_map *map)
 		map->arr_map[i++] = get_next_line(map->fd);
 	get_next_line(map->fd);
 	close(map->fd);
-	printf("%d\n", map->row);
-	printf("%d", map->col);
+	// printf("%d", map->col);
+	// printf("%d\n", map->row);
 	validate_wall(map);
 	parse_collect(map);
 	parse_exit_player(map);
+	print_map(map->arr_map, map->row, map->col);
+	printf("\n");
 	buffer = duplicate_map(map);
 	check_start(buffer, map);
+	print_map(map->arr_map, map->row, map->col);
+
 }
 
 // void    validate_and_init_game(char *mymap, t_map *map, int i)

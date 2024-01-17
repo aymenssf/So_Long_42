@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 18:55:57 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/12 11:04:29 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/17 14:44:49 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	**duplicate_map(t_map *map)
         while(i < map->row)
         {
                 j = 0;
-                while(i < map->col)
+                while(j < map->col)
                 {
                         tmp[i][j] = map->arr_map[i][j];
                         j++;
@@ -67,6 +67,7 @@ void	check_start(char **tmp, t_map *map)
 
        x = 0;
        ft_flood_fill(tmp, map);
+
        while(x < map->row)
        {
                 y = 0;
@@ -78,6 +79,20 @@ void	check_start(char **tmp, t_map *map)
                 x++;
        }
        free_tmp(tmp, map);
+}
+
+
+void flood_fill(char **tmp, t_map *map, int x, int y, char curr_pos, char replace)
+{
+        if(x < 0 || x >= map->row || y < 0 || y >= map->col)
+                return;
+        if(map->arr_map[x][y] != curr_pos)
+                return;
+        map->arr_map[x][y] = replace;
+        flood_fill(tmp, map, x + 1, y, curr_pos, replace);
+        flood_fill(tmp, map, x - 1, y, curr_pos, replace);
+        flood_fill(tmp, map, x, y + 1, curr_pos, replace);
+        flood_fill(tmp, map, x, y - 1, curr_pos, replace);
 }
 
 void	ft_flood_fill(char **tmp, t_map *map)
@@ -92,22 +107,9 @@ void	ft_flood_fill(char **tmp, t_map *map)
                 while(y < map->col)
                 {
                         if(tmp[x][y] == 'P')
-                                flood_fill(map, x, y, '0', 'F');
+                                flood_fill(tmp, map, x, y, '0', 'F');
                         y++;
                 }
                 x++;
        }
-}
-
-void flood_fill(t_map *map, int x, int y, char curr_pos, char replace)
-{
-        if(x < 0 || x >= map->row || y < 0 || y >= map->col)
-                return;
-        if(map->arr_map[x][y] != curr_pos)
-                return;
-        map->arr_map[x][y] = replace;
-        flood_fill(map, x + 1, y, curr_pos, replace);
-        flood_fill(map, x - 1, y, curr_pos, replace);
-        flood_fill(map, x, y + 1, curr_pos, replace);
-        flood_fill(map, x, y - 1, curr_pos, replace);
 }

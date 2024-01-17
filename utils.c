@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:41:05 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/12 11:51:11 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/17 10:33:23 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,23 @@
         return (new_p);
 } */
 
-void    count_line(t_map *map)
+void count_line(t_map *map)
 {
-        char *buff;
+    char *buff;
+    int curr_len;
 
-        buff = get_next_line(map->fd);
-        if(buff == 0)
-                print_error("Error in map");
-        map->col = ft_strlen(buff);
-        while(buff != NULL)
-        {
-                free(buff);
-                map->row++;
-                buff = get_next_line(map->fd);
-                if(buff == NULL)
-                        free(buff);
-        }
+    map->col = 0;
+    map->row = 0;
+
+    while ((buff = get_next_line(map->fd)) != NULL) {
+        curr_len = ft_strlen(buff);
+        if (curr_len > 0 && buff[curr_len - 1] == '\n')
+            curr_len--;
+        if (curr_len > map->col)
+            map->col = curr_len;
+        free(buff);
+        map->row++;
+    }
 }
 
 void free_tmp(char **tmp, t_map *map)

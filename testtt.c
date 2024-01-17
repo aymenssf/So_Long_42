@@ -1,29 +1,32 @@
 #include "so_long.h"
-void    count_line(t_map *map)
-{
-        char *buff;
+// void     parse_collect(t_map *map)
+// {
+//         int     i;
+//         int     j;
 
-        buff = get_next_line(map->fd);
-        printf("%s", buff);
-        if(buff == 0)
-                printf("Error in map");
-        map->col = strlen(buff);
-        while(buff != NULL)
-        {
-                free(buff);
-                map->row++;
-                buff = get_next_line(map->fd);
-                if(buff == NULL)
-                        free(buff);
-        }
-}
+//         i = 0;
+//         while(i < map->row)
+//         {
+//                 j = 0;
+//                 while(j < map->col)
+//                 {
+//                         check_char(map, i, j);
+//                         if(map->arr_map[i][j] == 'C')
+//                                 map->collect->count += 1;
+//                 }
+//                 if(map->collect->count == 0)
+//                         print_error("Collectibles are less than 1");
+//         }
+// }
 int main()
 {
         t_map *map;
         map = malloc(sizeof(t_map));
         map->fd = open("map.ber", O_RDONLY);
-        count_line(map);
-        printf("%d\n", map->row);
-        printf("%d", map->col);
+        parse_collect(map);
+        printf("%d\n",map->collect->count);
+        // for(int i; i < map->col; i++)
+        //         printf("%s\n", map->arr_map[i]);
+        // printf("%d", map->col);
         return(0);
 }
