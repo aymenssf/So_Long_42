@@ -31,16 +31,14 @@ void read_map_helper(t_map *map, int line_number) {
     }
     map->arr_map[line_number] = line;
 }
-void print_map(char **map, int rows, int cols)
-{
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < cols; j++)
-        {
+void print_map(char **map, int rows, int cols) {
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
             printf("%c", map[i][j]);
         }
         printf("\n");
     }
+    printf("\n");
 }
 void read_map(int argc, char **argv, t_map *map)
 {
@@ -63,17 +61,11 @@ void read_map(int argc, char **argv, t_map *map)
 		map->arr_map[i++] = get_next_line(map->fd);
 	get_next_line(map->fd);
 	close(map->fd);
-	// printf("%d", map->col);
-	// printf("%d\n", map->row);
 	validate_wall(map);
 	parse_collect(map);
 	parse_exit_player(map);
-	print_map(map->arr_map, map->row, map->col);
-	printf("\n");
 	buffer = duplicate_map(map);
 	check_start(buffer, map);
-	print_map(map->arr_map, map->row, map->col);
-
 }
 
 // void    validate_and_init_game(char *mymap, t_map *map, int i)

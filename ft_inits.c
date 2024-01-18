@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_inits.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aassaf <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 21:55:19 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/12 11:52:03 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/18 19:47:38 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ void init_struct(t_map *map)
 	map->collect->count = 0;
 	map->empty->count = 0;
 }
+
+// void init_image(t_map *map)
+// {
+// 	map->player
+// }
+
 void	init_map(t_map *map)
 {
 	map->mlx = mlx_init();

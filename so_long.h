@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aassaf <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:42:08 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/17 14:44:13 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/18 19:43:48 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,10 @@
 # include "gnl/get_next_line.h"
 # include "mlx.h"
 # include <stdio.h>
-typedef struct s_player
-{
-	int x;
-	int y;
-
-}	t_player;
 
 typedef struct s_image
 {
-	void *img;
+	void	*img;
 	int img_x;
 	int img_y;
 	int count;
@@ -71,7 +65,7 @@ void    parse_road(char **tmp, int i, int j);
 int     parse_exit_player(t_map *map);
 void     parse_collect(t_map *map);
 void	init_map(t_map *map);
-void flood_fill(char **tmp, t_map *map, int x, int y, char curr_pos, char replace);
+void flood_fill(char **tmp, int x, int y);
 void	ft_flood_fill(char **tmp, t_map *map);
 void	check_start(char **tmp, t_map *map);
 void free_map_and_road(char **tmp, t_map *map, int x, int y);

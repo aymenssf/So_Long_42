@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aassaf <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:30:40 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/17 13:39:24 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/18 13:40:17 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,21 +57,25 @@ int validate_wall(t_map *map)
 {
     int i;
 
-    for (i = 0; i < map->col; i++)
+    i = 0;
+    while (i < map->col)
     {
         if (map->arr_map[0][i] != '1' || map->arr_map[map->row - 1][i] != '1')
         {
             print_error("Map must be surrounded by walls.\n");
             return (1);
         }
+        i++;
     }
-    for (i = 1; i < map->row - 1; i++)
+    i = 1;
+    while (i < map->row - 1)
     {
         if (map->arr_map[i][0] != '1' || map->arr_map[i][map->col - 1] != '1')
         {
             print_error("Map must be surrounded by walls.\n");
             return (1);
         }
+        i++;
     }
     return (0);
 }

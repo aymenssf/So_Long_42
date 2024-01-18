@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aassaf <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 18:55:57 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/17 14:44:49 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/18 19:44:29 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,9 @@ void	check_start(char **tmp, t_map *map)
        int      y;
 
        x = 0;
+       	// print_map(tmp, map->row, map->col);
        ft_flood_fill(tmp, map);
-
+       	// print_map(tmp, map->row, map->col);
        while(x < map->row)
        {
                 y = 0;
@@ -82,17 +83,22 @@ void	check_start(char **tmp, t_map *map)
 }
 
 
-void flood_fill(char **tmp, t_map *map, int x, int y, char curr_pos, char replace)
+void flood_fill(char **tmp, int x, int y)
 {
-        if(x < 0 || x >= map->row || y < 0 || y >= map->col)
-                return;
-        if(map->arr_map[x][y] != curr_pos)
-                return;
-        map->arr_map[x][y] = replace;
-        flood_fill(tmp, map, x + 1, y, curr_pos, replace);
-        flood_fill(tmp, map, x - 1, y, curr_pos, replace);
-        flood_fill(tmp, map, x, y + 1, curr_pos, replace);
-        flood_fill(tmp, map, x, y - 1, curr_pos, replace);
+        if(tmp[x][y] == 'E' || tmp[x][y] == 'F')
+        {
+                if(tmp[x][y] == 'E')
+                        tmp[x][y] = 'F';
+                return ;
+        }
+        else if(tmp[x][y] != '1')
+        {
+                tmp[x][y] = 'F';
+                flood_fill(tmp, x + 1, y);
+                flood_fill(tmp, x - 1, y);
+                flood_fill(tmp, x, y + 1);
+                flood_fill(tmp, x, y - 1);
+        }
 }
 
 void	ft_flood_fill(char **tmp, t_map *map)
@@ -107,7 +113,7 @@ void	ft_flood_fill(char **tmp, t_map *map)
                 while(y < map->col)
                 {
                         if(tmp[x][y] == 'P')
-                                flood_fill(tmp, map, x, y, '0', 'F');
+                                flood_fill(tmp, x, y);
                         y++;
                 }
                 x++;
