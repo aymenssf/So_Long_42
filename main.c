@@ -87,6 +87,10 @@ int main(int argc, char **argv)
 	init_struct(map);
 	read_map(argc, argv, map);
 	init_map(map);
+	display_asset(map);
+	mlx_hook(map->win, KeyPress, KeyPressMask, &key_handle, map);
+	mlx_hook(map->mlx, 17, 1L << 0, close_map, &map);
+	mlx_loop(map->mlx);
 	// mlx_win = mlx_new_window(mlx, 1920, 1080, "first window!");
 	// img = mlx_new_image(mlx, 1920, 1080);
 	// mlx_loop(mlx);

@@ -6,14 +6,17 @@
 /*   By: aassaf <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:42:08 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/18 19:43:48 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/20 20:10:40 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# define PIXEL 64
+# define PIXEL 128
+
+# include <X11/keysym.h>
+# include <X11/X.h>
 
 # include <stdlib.h>
 # include <string.h>
@@ -61,7 +64,6 @@ char	**duplicate_map(t_map *map);
 void    check_arg(int argc, char **argv);
 void init_struct(t_map *map);
 char	**duplicate_map(t_map *map);
-void    parse_road(char **tmp, int i, int j);
 int     parse_exit_player(t_map *map);
 void     parse_collect(t_map *map);
 void	init_map(t_map *map);
@@ -73,6 +75,13 @@ void    count_line(t_map *map);
 void	free_tmp(char **tmp, t_map *map);
 void fd_error(t_map *map);
 void print_map(char **map, int rows, int cols);
+void    ft_display_asst(t_map *map, int i, int j);
+void    display_asset(t_map *map);
+int key_handle(int key, t_map *map);
+int     close_map(t_map *map);
+void    destroy_img(t_map *map);
+void	ft_free(t_map *map);
+// void    move_up(int key, t_map *map);
 // void    validate_and_init_game(char *mymap, t_map map, int i);
 // void    check_arg(int argc, char **argv, t_map *map);
 #endif
