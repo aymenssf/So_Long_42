@@ -6,7 +6,7 @@
 /*   By: aassaf <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:42:08 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/20 20:10:40 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/21 20:03:24 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,14 @@ int key_handle(int key, t_map *map);
 int     close_map(t_map *map);
 void    destroy_img(t_map *map);
 void	ft_free(t_map *map);
+void    move_up(int key, t_map *map);
+void    move_down(int key, t_map *map);
+void    move_right(int key, t_map *map);
+void    move_left(int key, t_map *map);
+void    event_up(t_map *map, int i, int j);
+void    event_down(t_map *map, int i, int j);
+void    event_right(t_map *map, int i, int j);
+void    event_left(t_map *map, int i, int j);
 // void    move_up(int key, t_map *map);
 // void    validate_and_init_game(char *mymap, t_map map, int i);
 // void    check_arg(int argc, char **argv, t_map *map);

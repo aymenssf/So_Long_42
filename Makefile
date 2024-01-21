@@ -28,7 +28,7 @@
 
 NAME	= so_long
 CC	= cc
-SRC	= parsing.c main.c parse_map.c utils.c ft_inits.c display.c event.c ./libft/ft_strlen.c
+SRC	= parsing.c main.c parse_map.c utils.c ft_inits.c display.c event.c move.c ./libft/ft_strlen.c
 GNL	= ./gnl/get_next_line.c ./gnl/get_next_line_utils.c
 
 
