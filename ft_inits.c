@@ -6,7 +6,7 @@
 /*   By: aassaf <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 21:55:19 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/20 19:44:50 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/22 18:49:57 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void init_struct(t_map *map)
 	}
 	map->player->count = 0;
 	map->collect->count = 0;
+	map->collect->count_collected = 0;
 	map->empty->count = 0;
 }
 

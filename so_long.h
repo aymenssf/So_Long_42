@@ -6,7 +6,7 @@
 /*   By: aassaf <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:42:08 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/21 20:03:24 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/22 18:49:31 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_image
 	int img_x;
 	int img_y;
 	int count;
+	int count_collected;
 }	t_image;
 
 

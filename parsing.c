@@ -6,7 +6,7 @@
 /*   By: aassaf <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:30:40 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/21 13:21:29 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/22 20:45:41 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,22 @@ void    check_arg(int argc, char **argv)
                 print_error("Invalid map\n");
 }
 
-void    validate_map(t_map *map)
-{
-        if(map->player->count < 1 || map->exit->count < 1 || map->collect->count < 1)
-        {
-                print_error("Map must contain at least one player, \
-                one exit and one collectible.\n");
-                return;
-        }
-        if(map->player->count > 1 || map->exit->count > 1)
-        {
-                print_error("Map must not contain duplicate player, \
-                duplicate exit\n");
-                return;
-        }
-        printf("Map is valid !\n");
-}
+// void    validate_map(t_map *map)
+// {
+//         if(map->player->count < 1 || map->exit->count < 1 || map->collect->count < 1)
+//         {
+//                 print_error("Map must contain at least one player, \
+//                 one exit and one collectible.\n");
+//                 return;
+//         }
+//         if(map->player->count > 1 || map->exit->count > 1)
+//         {
+//                 print_error("Map must not contain duplicate player, \
+//                 duplicate exit\n");
+//                 return;
+//         }
+//         printf("Map is valid !\n");
+// }
 int validate_wall(t_map *map)
 {
     int i;

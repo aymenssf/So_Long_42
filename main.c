@@ -18,19 +18,6 @@ void fd_error(t_map *map)
                 print_error("Invalid map");
 }
 
-void read_map_helper(t_map *map, int line_number) {
-    char *line;
-	line = get_next_line(map->fd);
-    if (!line) {
-        print_error("Unexpected end of file or read error.");
-    }
-    size_t len;
-	len = ft_strlen(line);
-    if (len > 0 && line[len - 1] == '\n') {
-        line[len - 1] = '\0';
-    }
-    map->arr_map[line_number] = line;
-}
 void print_map(char **map, int rows, int cols) {
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
@@ -61,9 +48,9 @@ void read_map(int argc, char **argv, t_map *map)
 		map->arr_map[i++] = get_next_line(map->fd);
 	get_next_line(map->fd);
 	close(map->fd);
+	parse_exit_player(map);
 	validate_wall(map);
 	parse_collect(map);
-	parse_exit_player(map);
 	buffer = duplicate_map(map);
 	check_start(buffer, map);
 }
@@ -89,6 +76,7 @@ int main(int argc, char **argv)
 	mlx_hook(map->win, 17, 1L << 0, *close_map, map);
 	mlx_loop(map->mlx);
 	close_map(map);
+
 	return (0);
 }
 
