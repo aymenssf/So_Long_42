@@ -42,7 +42,7 @@ all:	$(NAME)
 
 
 $(NAME): $(OBJ) $(OBJ_GNL)
-	clang $(CFLAGS) $(OBJ) $(OBJ_GNL) -Lmlx_linux mlx_linux/libmlx.a -lXext -lX11 -lm -lz -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(OBJ_GNL) -Lmlx_linux mlx_linux/libmlx.a -lXext -lX11 -lm -lz -o $(NAME)
 clean:
 	rm -f $(OBJ) $(OBJ_GNL)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aassaf <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 10:43:39 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/20 19:42:46 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/24 11:59:25 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,13 @@ void    display_asset(t_map *map)
                 }
                 i++;
         }
+}
+
+void	display_counter(t_map *map)
+{
+    printf("\n******************** STATISTICS *******************\n\n");
+    printf("Total number of items on the map: %d\n", map->collect->count);
+    printf("Total moves made by player so far: %d\n", map->player->count);
+    printf("Total items collected by the player: %d\n", map->collect->count_collected);
+    printf("\n***************************************************\n\n");
 }

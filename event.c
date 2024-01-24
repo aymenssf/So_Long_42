@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aassaf <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:18:33 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/22 19:05:19 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/24 16:59:41 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int key_handle(int key, t_map *map)
         move_down(key, map);
         move_right(key, map);
         move_left(key, map);
+        display_counter(map);
         return(0);
 }
  
@@ -86,9 +87,12 @@ void    event_down(t_map *map, int i, int j)
         else if (map->arr_map[i + 1][j] == 'E')
         {
                 if(map->collect->count == map->collect->count_collected)
+                {       
+                        printf("YOU WON !!");
                         close_map(map);
+                }
                 else
-                        return ;              
+                        return ;          
         }
         map->arr_map[i + 1][j] = 'P';
         map->arr_map[i][j] = '0';

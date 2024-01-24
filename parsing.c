@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aassaf <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:30:40 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/22 20:45:41 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/24 12:25:01 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,24 @@ void    check_char(t_map *map, int i, int j)
         if(map->arr_map[i][j] != '0' && map->arr_map[i][j] != '1'
          && map->arr_map[i][j] != 'C' && map->arr_map[i][j] != 'E'
          && map->arr_map[i][j] != 'P')
-                print_error("Invalid map\n");
+                hdl_error(map, 1);
 }
 // void    validate_map(t_map map, int fd)
 // {
 
 // }
-void    check_arg(int argc, char **argv)
+void    check_arg(int argc, char **argv, t_map *map)
 {
         int     i;
         if(argc != 2)
         {
-                print_error("Argument is invalid!\n");
+                hdl_error(map, 0);
                 return;
         }
         i = ft_strlen(argv[1]) - 1;
         if((argv[1][i] != 'r') ||( argv[1][i - 1] != 'e') || (argv[1][i - 2] != 'b')
         || argv[1][i - 3] != '.' || ft_strlen(argv[1]) < 5)
-                print_error("Invalid map\n");
+                hdl_error(map, 2);
 }
 
 // void    validate_map(t_map *map)
@@ -113,10 +113,11 @@ int     parse_exit_player(t_map *map)
 {
         int     i;
         int     j;
-
+        int count_exit;
+        int count_player;
         i = 0;
-        map->exit->count = 0;
-        map->player->count = 0;
+        count_exit = 0;
+        count_player = 0;
         while(i < map->row)
         {
                 j = 0;
@@ -124,15 +125,15 @@ int     parse_exit_player(t_map *map)
                 {
                         check_char(map, i, j);
                         if(map->arr_map[i][j] == 'E')
-                                map->exit->count += 1;
+                                count_exit += 1;
                         else if(map->arr_map[i][j] == 'P')
-                                map->player->count += 1;
+                                count_player += 1;
                         j++;
                 }
                 i++;
         }
-        if(map->exit->count != 1 || map->player->count != 1 )
-                print_error("Player or exit are more than 1");
+        if(count_exit != 1 || count_player != 1 )
+                print_error("Player or exit are different than 1");
         return (0);
 }
 

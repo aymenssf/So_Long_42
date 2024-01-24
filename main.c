@@ -18,29 +18,30 @@ void fd_error(t_map *map)
                 print_error("Invalid map");
 }
 
-void print_map(char **map, int rows, int cols) {
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < cols; ++j) {
-            printf("%c", map[i][j]);
-        }
-        printf("\n");
-    }
-    printf("\n");
-}
 void read_map(int argc, char **argv, t_map *map)
 {
     int i;
 	// int j;
     char **buffer;
     buffer = NULL;
-    check_arg(argc, argv);
+    check_arg(argc, argv, map);
     i = 0;
     map->row = 0;
     map->col = 0;
     map->fd = open(argv[1], O_RDONLY);
 	fd_error(map);
 	count_line(map);
+	if (map->row == 0)
+	{
+		print_error("Error: Map file is empty.\n");
+		exit(1);
+	}
 	map->arr_map = malloc(sizeof(char *) * (map->row));
+	if (map->arr_map == NULL)
+	{
+		close(map->fd);
+        	print_error("Memory allocation failed.\n");
+    	}
 	close(map->fd);
     map->fd = open(argv[1], O_RDONLY);
 	fd_error(map);
@@ -55,10 +56,32 @@ void read_map(int argc, char **argv, t_map *map)
 	check_start(buffer, map);
 }
 
-// void    validate_and_init_game(char *mymap, t_map *map, int i)
+// void	read_map(int argc, char *argv[], t_map *map)
 // {
-//         validate_map(map);
-//         check_char(map)
+// 	int		i;
+// 	char	**tmp;
+
+// 	tmp = NULL;
+// 	check_arg(argc, argv, map);
+// 	i = 0;
+// 	map->row = 0;
+// 	map->col = 0;
+// 	map->fd = open(argv[1], O_RDONLY);
+// 	if (map->fd == -1)
+// 		hdl_error(map, 3);
+// 	count_line(map);
+// 	map->arr_map = malloc(sizeof(char *) * (map->row));
+// 	close(map->fd);
+// 	map->fd = open(argv[1], O_RDONLY);
+// 	while (i < map->row)
+// 		map->arr_map[i++] = get_next_line(map->fd);
+// 	get_next_line(map->fd);
+// 	close(map->fd);
+// 	parse_exit_player(map);
+// 	validate_wall(map);
+// 	parse_collect(map);
+// 	tmp = duplicate_map(map);
+// 	check_start(tmp, map);
 // }
 
 int main(int argc, char **argv)
@@ -76,7 +99,6 @@ int main(int argc, char **argv)
 	mlx_hook(map->win, 17, 1L << 0, *close_map, map);
 	mlx_loop(map->mlx);
 	close_map(map);
-
 	return (0);
 }
 

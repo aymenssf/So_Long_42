@@ -6,7 +6,7 @@
 /*   By: aassaf <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 18:55:57 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/18 19:44:29 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/23 10:13:14 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void free_map_and_road(char **tmp, t_map *map, int x, int y)
                         i++;
                 }
                 free(map->arr_map);
-                print_error("No path available to exit or items");
+                hdl_error(map, 3);
         }
 }
 

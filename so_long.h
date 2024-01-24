@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aassaf <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:42:08 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/22 18:49:31 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/24 11:54:23 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void read_map_helper(t_map *map, int line_number);
 int     print_error(char *s);
 char	*get_next_line(int fd);
 char	**duplicate_map(t_map *map);
-void    check_arg(int argc, char **argv);
+void    check_arg(int argc, char **argv, t_map *map);
 void init_struct(t_map *map);
 char	**duplicate_map(t_map *map);
 int     parse_exit_player(t_map *map);
@@ -75,9 +75,11 @@ void free_map_and_road(char **tmp, t_map *map, int x, int y);
 void    count_line(t_map *map);
 void	free_tmp(char **tmp, t_map *map);
 void fd_error(t_map *map);
+void hdl_error(t_map *map, int flag);
 void print_map(char **map, int rows, int cols);
 void    ft_display_asst(t_map *map, int i, int j);
 void    display_asset(t_map *map);
+void	display_counter(t_map *map);
 int key_handle(int key, t_map *map);
 int     close_map(t_map *map);
 void    destroy_img(t_map *map);
@@ -92,5 +94,4 @@ void    event_right(t_map *map, int i, int j);
 void    event_left(t_map *map, int i, int j);
 // void    move_up(int key, t_map *map);
 // void    validate_and_init_game(char *mymap, t_map map, int i);
-// void    check_arg(int argc, char **argv, t_map *map);
 #endif
