@@ -6,17 +6,17 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:30:40 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/24 11:32:31 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/26 15:52:23 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void    check_char(t_map *map, int i, int j)
 {
         if(map->arr_map[i][j] != '0' && map->arr_map[i][j] != '1'
          && map->arr_map[i][j] != 'C' && map->arr_map[i][j] != 'E'
-         && map->arr_map[i][j] != 'P')
+         && map->arr_map[i][j] != 'P' && map->arr_map[i][j] != 'M')
                 hdl_error(map, 1);
 }
 // void    validate_map(t_map map, int fd)
@@ -79,35 +79,6 @@ int validate_wall(t_map *map)
     }
     return (0);
 }
-//check if the map is surrounded with walls
-// int validate_wall(t_map *map)
-// {
-//         int     i;
-//         int     j;
-//         // i = 0;
-//         // while(i < map->row)
-//         // {
-//         //         if (map->col != (int)ft_strlen(map->arr_map[i]))
-//         //                 print_error("Map must be surrounded by walls.\n");
-//         //         i++;
-//         // }
-//         i = 0;
-//         while(i < map->row)
-//         {
-//                 j = 0;
-//                 while(j < map->col)
-//                 {
-//                         if((i == 0 || i == map->row - 1 || j == 0 || j == map->col - 1) && map->arr_map[i][j] != '1')
-//                         {
-//                                 print_error("Map must be surrounded by walls.\n");
-//                                 return (1);
-//                         }
-//                         j++;
-//                 }
-//                 i++;
-//         }
-//         return (0);
-// }
 
 int     parse_exit_player(t_map *map)
 {

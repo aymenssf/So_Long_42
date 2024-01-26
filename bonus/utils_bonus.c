@@ -6,11 +6,11 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:41:05 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/24 11:32:38 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/26 16:19:19 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 /* void *ft_realloc(void *p, size_t new_size, size_t old_size)
 {
@@ -40,14 +40,12 @@ void count_line(t_map *map)
 
     map->col = 0;
     map->row = 0;
-    line_is_empty = 1; // Start by assuming the file is empty
+    line_is_empty = 1;
 
     while ((buff = get_next_line(map->fd)) != NULL) {
         curr_len = ft_strlen(buff);
-        // Check for a newline character at the end of the buffer
         if (curr_len > 0 && buff[curr_len - 1] == '\n')
             curr_len--;
-        // If there's any content other than a newline, the file isn't completely empty
         if (curr_len > 0)
             line_is_empty = 0;
         if (curr_len > map->col)
@@ -57,8 +55,7 @@ void count_line(t_map *map)
     }
 
     if (line_is_empty == 1) {
-        // If the file didn't have any non-empty lines, it's considered empty
-        print_error("Empy Map OR Contains empty lines.\n"); // This will exit, as per your design
+        print_error("Empy Map OR Contains empty lines.\n");
     }
 }
 // void	count_line(t_map *map)
@@ -93,6 +90,7 @@ void free_tmp(char **tmp, t_map *map)
 void ft_free(t_map *map)
 {
         free(map->player);
+        free(map->enemy);
         free(map->wall);
         free(map->exit);
         free(map->collect);

@@ -6,12 +6,12 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:27:45 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/24 11:32:11 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/26 16:03:11 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void    ft_display_asst(t_map *map, int i, int j)
 {
@@ -25,7 +25,8 @@ void    ft_display_asst(t_map *map, int i, int j)
                 mlx_put_image_to_window(map->mlx, map->win, map->collect->img, j * 64, i * 64);
         else if (map->arr_map[i][j] == 'E')
                 mlx_put_image_to_window(map->mlx, map->win, map->exit->img, j * 64, i * 64);
-
+        else if (map->arr_map[i][j] == 'M')
+                mlx_put_image_to_window(map->mlx, map->win, map->enemy->img, j * 64, i * 64);
 }
 
 void    display_asset(t_map *map)

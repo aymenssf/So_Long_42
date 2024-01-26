@@ -6,11 +6,11 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:18:36 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/24 11:32:25 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/26 13:18:48 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void    move_up(int key, t_map *map)
 {

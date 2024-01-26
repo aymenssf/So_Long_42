@@ -6,11 +6,11 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:18:33 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/24 11:32:16 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/26 16:15:46 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void    destroy_img(t_map *map)
 {
@@ -52,37 +52,36 @@ int key_handle(int key, t_map *map)
         return(0);
 }
  
-void    event_up(t_map *map, int i, int j)
+void event_up(t_map *map, int i, int j)
 {
-        // int count_collect;
-        // count_collect = 0;
-        if(map->arr_map[i - 1][j] == 'C')
-                map->collect->count_collected += 1;
-        else if (map->arr_map[i - 1][j] == 'E')
+    if(map->arr_map[i - 1][j] == 'C')
+        map->collect->count_collected += 1;
+    else if (map->arr_map[i - 1][j] == 'E')
+    {
+        if(map->collect->count == map->collect->count_collected)
         {
-                if(map->collect->count == map->collect->count_collected)
-                {       
-                        printf("YOU WON !!");
-                        close_map(map);
-                }
-                else
-                        return ;              
+            printf("YOU WON !!");
+            close_map(map);
         }
-        map->arr_map[i - 1][j] = 'P';
-        map->arr_map[i][j] = '0';
+        else
+            return;
+    }
+//     if (map->player->count % 2 == 0) {
+//     } else {
+        // mlx_put_image_to_window(map->mlx, map->win, map->player->img_2, j * 64, (i - 1) * 64);
+//     }
+    map->arr_map[i - 1][j] = 'P';
+    map->arr_map[i][j] = '0';
         mlx_put_image_to_window(map->mlx, map->win, map->empty->img, j * 64, i * 64);
         mlx_put_image_to_window(map->mlx, map->win, map->player->img, j * 64, (i - 1) * 64);
-        map->player->count += 1;
-        return ;
+    map->player->count += 1;
+    return ;
 }
 
 void    event_down(t_map *map, int i, int j)
 {
-        // int count_collect;
-        // count_collect = 0;
         if(map->arr_map[i + 1][j] == 'C')
                 map->collect->count_collected += 1;
-
         else if (map->arr_map[i + 1][j] == 'E')
         {
                 if(map->collect->count == map->collect->count_collected)

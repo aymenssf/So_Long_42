@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:42:08 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/24 11:32:34 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/26 15:27:48 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,27 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <fcntl.h>
-# include "libft/libft.h"
-# include "gnl/get_next_line.h"
+# include "../libft/libft.h"
+# include "../gnl/get_next_line.h"
 # include "mlx.h"
 # include <stdio.h>
 
+// typedef struct s_animation
+// {
+// 	void **frames;
+// 	int total_frames;
+// 	int current_frame;
+// 	float frame_delay;
+// 	float elapsed_time;
+// 	int img_width;
+// 	int img_height;
+// } t_animation;
+
 typedef struct s_image
 {
+	void *img_1;
+	void *img_2; 
+	// t_animation animation;
 	void	*img;
 	int img_x;
 	int img_y;
@@ -43,6 +57,7 @@ typedef struct s_map
 	void *mlx;
 	void *win;
 	t_image *player;
+	t_image *enemy;
 	t_image *collect;
 	t_image *wall;
 	t_image *empty;
