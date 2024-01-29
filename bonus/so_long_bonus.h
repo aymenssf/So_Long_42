@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:42:08 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/26 15:27:48 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/28 17:01:13 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@
 
 typedef struct s_image
 {
+	void *animation_frames[50];
+    	int num_frames;
+    	int current_frame; 
 	void *img_1;
 	void *img_2; 
 	// t_animation animation;
@@ -69,11 +72,10 @@ typedef struct s_map
 }	t_map;
 
 size_t				ft_strlen(const char *s);
-void    validate_map(t_map *map);
+char	*ft_itoa(int n);
 int validate_wall(t_map *map);
 void    *ft_realloc(void *p, size_t new_size, size_t old_size);
 void	read_map(int argc, char **argv, t_map *map);
-void read_map_helper(t_map *map, int line_number);
 int     print_error(char *s);
 char	*get_next_line(int fd);
 char	**duplicate_map(t_map *map);
@@ -91,7 +93,6 @@ void    count_line(t_map *map);
 void	free_tmp(char **tmp, t_map *map);
 void fd_error(t_map *map);
 void hdl_error(t_map *map, int flag);
-void print_map(char **map, int rows, int cols);
 void    ft_display_asst(t_map *map, int i, int j);
 void    display_asset(t_map *map);
 int key_handle(int key, t_map *map);
@@ -106,6 +107,5 @@ void    event_up(t_map *map, int i, int j);
 void    event_down(t_map *map, int i, int j);
 void    event_right(t_map *map, int i, int j);
 void    event_left(t_map *map, int i, int j);
-// void    move_up(int key, t_map *map);
-// void    validate_and_init_game(char *mymap, t_map map, int i);
+void	game_over(t_map *map);
 #endif

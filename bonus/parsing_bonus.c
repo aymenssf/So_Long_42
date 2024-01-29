@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:30:40 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/26 15:52:23 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/27 17:40:37 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ void    check_arg(int argc, char **argv, t_map *map)
 // {
 //         if(map->player->count < 1 || map->exit->count < 1 || map->collect->count < 1)
 //         {
-//                 print_error("Map must contain at least one player, \
+//                 print_error("Map must contain at least one player,
 //                 one exit and one collectible.\n");
 //                 return;
 //         }
 //         if(map->player->count > 1 || map->exit->count > 1)
 //         {
-//                 print_error("Map must not contain duplicate player, \
+//                 print_error("Map must not contain duplicate player,
 //                 duplicate exit\n");
 //                 return;
 //         }

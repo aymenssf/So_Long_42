@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:18:33 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/26 16:15:46 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/27 17:58:33 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void    destroy_img(t_map *map)
 {
         mlx_destroy_image(map->mlx, map->player->img);
+        mlx_destroy_image(map->mlx, map->enemy->img);
         mlx_destroy_image(map->mlx, map->wall->img);
         mlx_destroy_image(map->mlx, map->exit->img);
         mlx_destroy_image(map->mlx, map->collect->img);
@@ -54,18 +55,20 @@ int key_handle(int key, t_map *map)
  
 void event_up(t_map *map, int i, int j)
 {
-    if(map->arr_map[i - 1][j] == 'C')
-        map->collect->count_collected += 1;
-    else if (map->arr_map[i - 1][j] == 'E')
-    {
-        if(map->collect->count == map->collect->count_collected)
+        if (map->arr_map[i - 1][j] == 'M')
+                game_over(map);
+        if(map->arr_map[i - 1][j] == 'C')
+                map->collect->count_collected += 1;
+        else if (map->arr_map[i - 1][j] == 'E')
         {
-            printf("YOU WON !!");
-            close_map(map);
+                if(map->collect->count == map->collect->count_collected)
+                {
+                printf("YOU WON !!");
+                close_map(map);
+                }
+                else
+                        return;
         }
-        else
-            return;
-    }
 //     if (map->player->count % 2 == 0) {
 //     } else {
         // mlx_put_image_to_window(map->mlx, map->win, map->player->img_2, j * 64, (i - 1) * 64);
@@ -80,6 +83,8 @@ void event_up(t_map *map, int i, int j)
 
 void    event_down(t_map *map, int i, int j)
 {
+        if (map->arr_map[i + 1][j] == 'M')
+                game_over(map);
         if(map->arr_map[i + 1][j] == 'C')
                 map->collect->count_collected += 1;
         else if (map->arr_map[i + 1][j] == 'E')
@@ -110,6 +115,8 @@ void    event_down(t_map *map, int i, int j)
 
 void    event_right(t_map *map, int i, int j)
 {
+        if (map->arr_map[i][j + 1] == 'M')
+                game_over(map);
         // int count_collect;
         // count_collect = 0;
         if(map->arr_map[i][j + 1] == 'C')
@@ -135,6 +142,8 @@ void    event_right(t_map *map, int i, int j)
 
 void    event_left(t_map *map, int i, int j)
 {
+        if (map->arr_map[i][j - 1] == 'M')
+                game_over(map);
         // int count_collect;
         // count_collect = 0;
         if(map->arr_map[i][j - 1] == 'C')
