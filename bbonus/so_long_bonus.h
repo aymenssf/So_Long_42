@@ -37,17 +37,12 @@ typedef struct s_animation
 
 typedef struct s_image
 {
-	void *animation_frames[50];
-    	int num_frm;
-    	int curr_frm; 
-	void *img_1;
-	void *img_2; 
+	void *animations[50];
 	void	*img;
 	int img_x;
 	int img_y;
 	int count;
 	int count_collected;
-	void ***arr_img;
 }	t_image;
 
 
@@ -55,17 +50,17 @@ typedef struct s_map
 {
 	void *mlx;
 	void *win;
-	t_image *player;
-	t_image *enemy;
-	t_image *collect;
-	t_image *wall;
-	t_image *empty;
-	t_image *exit;
+	t_image player;
+	t_image enemy;
+	t_image collect;
+	t_image wall;
+	t_image empty;
+	t_image exit;
 	int fd;
 	int row;
 	int col;
 	char **arr_map;
-	t_image img;
+	t_image *img;
 }	t_map;
 
 size_t				ft_strlen(const char *s);
@@ -109,8 +104,10 @@ void    event_down(t_map *map, int i, int j);
 void    event_right(t_map *map, int i, int j);
 void    event_left(t_map *map, int i, int j);
 void	game_over(t_map *map);
-void	init_player_sprite_img(void ***img, t_map *map, int w, int h);
-void player_sprite(void ***img, t_map *map, int w, int h);
+void	init_player_sprite_img(t_map *map, int w, int h);
+void	init_blocks__img(t_map *map, int w, int h);
+void player_sprite(t_map *map, int w, int h);
+void free_arr_img(t_map *map, void ***arr_img, int *cols_per_row, int rows);
 // void    move_up(int key, t_map *map);
 // void    validate_and_init_game(char *mymap, t_map map, int i);
 #endif

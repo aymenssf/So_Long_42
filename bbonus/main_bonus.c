@@ -58,20 +58,17 @@ void read_map(int argc, char **argv, t_map *map)
 
 int main(int argc, char **argv)
 {
-	t_map	*map;
-
-	map = malloc(sizeof(t_map));
+	t_map	*map = NULL;
+	map = calloc(1 ,sizeof(t_map));
 	if(!map)
 		return(0);
-	init_struct(map);
 	read_map(argc, argv, map);
 	init_map(map);
-	init_player_sprite_img(map->img.arr_img, map, 64, 64);
-	mlx_loop_hook(map->mlx, display_asset, map);
+	init_struct(map);
 	display_asset(map);
 	mlx_hook(map->win, KeyPress, KeyPressMask, &key_handle, map);
 	mlx_hook(map->win, 17, 1L << 0, *close_map, map);
+	mlx_loop_hook(map->mlx, display_asset, map);
 	mlx_loop(map->mlx);
-	close_map(map);
 	return (0);
 }

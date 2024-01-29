@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:18:36 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/28 21:15:40 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/29 19:23:17 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ void    move_up(int key, t_map *map)
                         if((map->arr_map[i][j] == 'P') && (map->arr_map[i - 1][j] != '1'))
                         {
                                 event_up(map, i, j);
-                                update_animation(map->player);
-                                
+                                // update_animation(map->player);
                         }
                         j++;
                 }

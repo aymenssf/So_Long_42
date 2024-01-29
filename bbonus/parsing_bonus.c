@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:30:40 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/27 18:12:26 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/29 12:12:07 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void    check_arg(int argc, char **argv, t_map *map)
 
 // void    validate_map(t_map *map)
 // {
-//         if(map->player->count < 1 || map->exit->count < 1 || map->collect->count < 1)
+//         if(map->player->count < 1 || map->exit->count < 1 || map->collect.count < 1)
 //         {
 //                 print_error("Map must contain at least one player, \
 //                 one exit and one collectible.\n");
@@ -150,12 +150,12 @@ void     parse_collect(t_map *map)
                 {
                         check_char(map, i, j);
                         if(map->arr_map[i][j] == 'C')
-                                map->collect->count += 1;
+                                map->collect.count += 1;
                         j++;
                 }
                 i++;
         }
-        if(map->collect->count == 0)
+        if(map->collect.count == 0)
                 print_error("Collectibles are less than 1");
         return ;
 }
