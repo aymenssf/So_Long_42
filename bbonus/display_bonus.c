@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 10:43:39 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/29 19:21:20 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/31 14:34:29 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,17 @@ void    ft_display_asst(t_map *map, int i, int j)
         else if (map->arr_map[i][j] == 'P')
         {        
                 mlx_put_image_to_window(map->mlx, map->win, map->player.animations[0], j * 64, i * 64);
-                // player_sprite(map, j * 64, i * 64);
+                player_sprite(map, j * 64, i * 64, map->player.curr_direction);
         }
         else if (map->arr_map[i][j] == 'C')
                 mlx_put_image_to_window(map->mlx, map->win, map->collect.animations[0], j * 64, i * 64);
         else if (map->arr_map[i][j] == 'E')
-                mlx_put_image_to_window(map->mlx, map->win, map->exit.animations[0], j * 64, i * 64);
+        {
+                if(map->collect.count == map->collect.count_collected)
+                        mlx_put_image_to_window(map->mlx, map->win, map->exit.animations[1], j * 64, i * 64);       
+                else
+                        mlx_put_image_to_window(map->mlx, map->win, map->exit.animations[0], j * 64, i * 64);
+        }        
         else if (map->arr_map[i][j] == 'M')
                 mlx_put_image_to_window(map->mlx, map->win, map->enemy.animations[0], j * 64, i * 64);
 

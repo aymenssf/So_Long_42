@@ -28,6 +28,11 @@
 # include "mlx.h"
 # include <stdio.h>
 
+#define RIGHT 0
+#define DOWN 1
+#define UP 2
+#define LEFT 3
+
 typedef struct s_animation
 {
     int i;
@@ -43,6 +48,7 @@ typedef struct s_image
 	int img_y;
 	int count;
 	int count_collected;
+	int curr_direction;
 }	t_image;
 
 
@@ -88,8 +94,6 @@ void fd_error(t_map *map);
 void hdl_error(t_map *map, int flag);
 void    ft_display_asst(t_map *map, int i, int j);
 int    display_asset(t_map *map);
-void init_img_player(t_map *map);
-void update_animation(t_image *image);
 void	display_counter(t_map *map);
 int key_handle(int key, t_map *map);
 int     close_map(t_map *map);
@@ -106,8 +110,8 @@ void    event_left(t_map *map, int i, int j);
 void	game_over(t_map *map);
 void	init_player_sprite_img(t_map *map, int w, int h);
 void	init_blocks__img(t_map *map, int w, int h);
-void player_sprite(t_map *map, int w, int h);
+void player_sprite(t_map *map, int w, int h, int direction);
 void free_arr_img(t_map *map, void ***arr_img, int *cols_per_row, int rows);
-// void    move_up(int key, t_map *map);
+void kill_enemy(t_map *map, int key);
 // void    validate_and_init_game(char *mymap, t_map map, int i);
 #endif

@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:18:36 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/29 19:23:17 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/30 10:16:22 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void    move_up(int key, t_map *map)
         if (key != 119)
                 return ;       
         i = 0;
+        map->player.curr_direction = 2;
         while(i < map->row)
         {
                 j = 0;
@@ -28,7 +29,6 @@ void    move_up(int key, t_map *map)
                         if((map->arr_map[i][j] == 'P') && (map->arr_map[i - 1][j] != '1'))
                         {
                                 event_up(map, i, j);
-                                // update_animation(map->player);
                         }
                         j++;
                 }
@@ -43,6 +43,7 @@ void    move_down(int key, t_map *map)
         if (key != 115)
                 return ;        
         i = 0;
+        map->player.curr_direction = 1;
         while(i < map->row)
         {
                 j = 0;
@@ -67,6 +68,7 @@ void    move_right(int key, t_map *map)
         if (key != 100)
                 return ;       
         i = 0;
+        map->player.curr_direction = 0;
         while(i < map->row)
         {
                 j = 0;
@@ -91,6 +93,7 @@ void    move_left(int key, t_map *map)
         if (key != 97)
                 return ;
         i = 0;
+        map->player.curr_direction = 3;
         while(i < map->row)
         {
                 j = 0;

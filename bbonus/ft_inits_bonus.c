@@ -6,26 +6,15 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 21:55:19 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/29 12:13:09 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/30 16:24:41 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 void init_struct(t_map *map)
 {
-	// int i;
-	
-	// map->img->arr_img = (void **) malloc (6 * sizeof (void *));
-	// i = 0;
-	// while (i < 5)
-	// 	map->img->arr_img[i++] = (void **) malloc (1 * sizeof (void *));
-	// map->img->arr_img[i++] = (void **) malloc (12 * sizeof (void *));
 	init_blocks__img(map, 64, 64);
 	init_player_sprite_img(map, 64, 64);
-	// map->player->count = 0;
-	// map->collect.count = 0;
-	// map->collect.count_collected = 0;
-	// map->empty->count = 0;
 }
 
 // void init_img_player(t_map *map)

@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:18:33 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/29 19:23:42 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/30 17:35:30 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int key_handle(int key, t_map *map)
 {
         if(key == XK_Escape)
                 close_map(map);
+        else if (key == XK_Up || key == XK_Down || key == XK_Right || key == XK_Left)
+                kill_enemy(map, key);
         move_up(key, map);
         move_down(key, map);
         move_right(key, map);
