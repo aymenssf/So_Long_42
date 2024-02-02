@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 18:55:57 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/27 20:46:24 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/02/01 19:29:12 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ void	check_start(char **tmp, t_map *map)
 
 void flood_fill(char **tmp, int x, int y)
 {
-        if(tmp[x][y] == 'E' || tmp[x][y] == 'F' || tmp[x][y] == 'M')
+        if(tmp[x][y] == 'E' || tmp[x][y] == 'F')
         {
-                if(tmp[x][y] == 'E' || tmp[x][y] == 'M')
+                if(tmp[x][y] == 'E')
                         tmp[x][y] = 'F';
                 return ;
         }

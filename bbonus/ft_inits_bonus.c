@@ -6,15 +6,17 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 21:55:19 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/30 16:24:41 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/02/01 21:29:28 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 void init_struct(t_map *map)
 {
+	// map->enemy.curr_direction = 1;
 	init_blocks__img(map, 64, 64);
 	init_player_sprite_img(map, 64, 64);
+	init_collect_sprite_img(map, 64, 64);
 }
 
 // void init_img_player(t_map *map)
@@ -34,18 +36,6 @@ void init_struct(t_map *map)
 //         map->player->animation_frames[frame] = mlx_xpm_file_to_image(map->mlx, frame_path, &map->player->img_x, &map->player->img_y);
 //     }
 
-// }
-
-// void init_image(t_map *map)
-// {
-// 	// map->player->img = mlx_xpm_file_to_image(map->mlx, "./animations/player/shark1.xpm", &map->player->img_x, &map->player->img_y);
-// 	// map->player->img_1 = mlx_xpm_file_to_image(map->mlx, "./animations/player/sharkup.xpm", &map->player->img_x, &map->player->img_y);
-// 	// map->player->img_2 = mlx_xpm_file_to_image(map->mlx, "./animations/player/sharkup2.xpm", &map->player->img_x, &map->player->img_y);
-// 	map->enemy->img = mlx_xpm_file_to_image(map->mlx, "./assets/enem.xpm", &map->enemy->img_x, &map->enemy->img_y);
-// 	map->collect.img = mlx_xpm_file_to_image(map->mlx, "./assets/collect.xpm", &map->collect.img_x, &map->collect.img_y);
-// 	map->empty->img = mlx_xpm_file_to_image(map->mlx, "./assets/ground.xpm", &map->empty->img_x, &map->empty->img_y);
-// 	map->wall->img = mlx_xpm_file_to_image(map->mlx, "./assets/wall.xpm", &map->wall->img_x, &map->wall->img_y);
-// 	map->exit->img = mlx_xpm_file_to_image(map->mlx, "./assets/exit.xpm", &map->exit->img_x, &map->exit->img_y);
 // }
 
 void	init_map(t_map *map)

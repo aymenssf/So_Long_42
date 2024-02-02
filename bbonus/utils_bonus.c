@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:41:05 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/29 12:05:27 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/01/31 22:39:55 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,9 @@ void ft_free(t_map *map)
         // free(map->enemy);
         // free(map->wall);
         // free(map->exit);
-        // //free(map->collect);
+        // free(map->collect);
         // free(map->empty);
-        // free(map);
+        free(map);
 }
 
 void hdl_error(t_map *map, int flag)
