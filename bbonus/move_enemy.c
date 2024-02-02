@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 09:23:53 by aassaf            #+#    #+#             */
-/*   Updated: 2024/02/02 13:04:56 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/02/02 22:32:39 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ void enemy_patrol(t_map *map, int *curr_direc_h)
             {
                 if ((j + *curr_direc_h < map->col && map->arr_map[i][j + *curr_direc_h] == '1') ||
                     (j + *curr_direc_h < map->col && map->arr_map[i][j + *curr_direc_h] == 'C') ||
-                    (j + *curr_direc_h < map->col && map->arr_map[i][j + *curr_direc_h] == 'E'))
+                    (j + *curr_direc_h < map->col && map->arr_map[i][j + *curr_direc_h] == 'E') ||
+                    (j + *curr_direc_h < map->col && map->arr_map[i][j + *curr_direc_h] == 'M'))
                     *curr_direc_h = -(*curr_direc_h);
                 if ((j + *curr_direc_h >= 0 && map->arr_map[i][j + *curr_direc_h] == 'P'))
                     game_over(map);

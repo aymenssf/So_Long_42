@@ -6,13 +6,14 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 10:43:39 by aassaf            #+#    #+#             */
-/*   Updated: 2024/02/01 22:20:14 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/02/02 18:56:01 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 void    ft_display_asst(t_map *map, int i, int j)
 {
+        collect_sprite(map, j * 64, i * 64);
         if(map->arr_map[i][j] == '1')
                 mlx_put_image_to_window(map->mlx, map->win, map->wall.animations[0], j * 64, i * 64);
         else if (map->arr_map[i][j] == '0')
@@ -21,11 +22,6 @@ void    ft_display_asst(t_map *map, int i, int j)
         {        
                 mlx_put_image_to_window(map->mlx, map->win, map->player.animations[0], j * 64, i * 64);
                 player_sprite(map, j * 64, i * 64, map->player.curr_direction);
-        }
-        else if (map->arr_map[i][j] == 'C')
-        {
-                mlx_put_image_to_window(map->mlx, map->win, map->collect.animations[0], j * 64, i * 64);
-                collect_sprite(map, j * 64, i * 64);
         }
         else if (map->arr_map[i][j] == 'E')
         {

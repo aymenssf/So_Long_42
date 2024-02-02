@@ -13,8 +13,6 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# define PIXEL 128
-
 # include <X11/keysym.h>
 # include <X11/X.h>
 
@@ -36,7 +34,7 @@
 
 typedef struct s_image
 {
-	void *animations[100];
+	void *animations[55];
 	void	*img;
 	int img_x;
 	int img_y;
@@ -111,5 +109,5 @@ void move_enemy_h(t_map *map, int i, int *j, int *curr_direc);
 void enemy_patrol(t_map *map, int *curr_direc);
 void collect_sprite(t_map *map, int w, int h);
 void init_collect_sprite_img(t_map *map, int w, int h);
-// void    validate_and_init_game(char *mymap, t_map map, int i);
+
 #endif
