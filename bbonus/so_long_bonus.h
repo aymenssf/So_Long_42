@@ -33,22 +33,18 @@
 #define UP 2
 #define LEFT 3
 
-typedef struct s_animation
-{
-    int i;
-    int j;
-    int player_status;
-} t_animation;
 
 typedef struct s_image
 {
-	void *animations[50];
+	void *animations[100];
 	void	*img;
 	int img_x;
 	int img_y;
 	int count;
 	int count_collected;
 	int curr_direction;
+	int position_x;
+	int position_y;
 }	t_image;
 
 
@@ -70,11 +66,9 @@ typedef struct s_map
 }	t_map;
 
 size_t				ft_strlen(const char *s);
-void    validate_map(t_map *map);
 int validate_wall(t_map *map);
 void    *ft_realloc(void *p, size_t new_size, size_t old_size);
 void	read_map(int argc, char **argv, t_map *map);
-void read_map_helper(t_map *map, int line_number);
 int     print_error(char *s);
 char	*get_next_line(int fd);
 char	**duplicate_map(t_map *map);
@@ -113,5 +107,9 @@ void	init_blocks__img(t_map *map, int w, int h);
 void player_sprite(t_map *map, int w, int h, int direction);
 void free_arr_img(t_map *map, void ***arr_img, int *cols_per_row, int rows);
 void kill_enemy(t_map *map, int key);
+void move_enemy_h(t_map *map, int i, int *j, int *curr_direc);
+void enemy_patrol(t_map *map, int *curr_direc);
+void collect_sprite(t_map *map, int w, int h);
+void init_collect_sprite_img(t_map *map, int w, int h);
 // void    validate_and_init_game(char *mymap, t_map map, int i);
 #endif
