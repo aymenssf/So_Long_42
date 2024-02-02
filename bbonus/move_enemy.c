@@ -6,50 +6,12 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 09:23:53 by aassaf            #+#    #+#             */
-/*   Updated: 2024/02/02 13:01:55 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/02/02 13:04:56 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-
-// void move_enemy_v(t_map *map, int i, int j) {
-//     int next_i = i + map->enemy.curr_direction;
-
-//     if (next_i >= 0 && next_i < map->row && map->arr_map[next_i][j] != '1') {
-//         map->arr_map[next_i][j] = 'M';
-//         map->arr_map[i][j] = '0';
-//     } else {
-//         map->enemy.curr_direction = -map->enemy.curr_direction;
-//     }
-// }
-// void enemy_patrol(t_map *map, unsigned int frame) {
-//         map->enemy.curr_direction = 1;
-//     if (frame % 20 == 0) {
-//         for (int i = 0; i < map->row; i++) {
-//             for (int j = 0; j < map->col; j++) {
-//                 if (map->arr_map[i][j] == 'M') {
-//                     if (map->enemy.curr_direction == 1) {
-//                         move_enemy_h(map, i, j);
-//                     } else {
-//                         move_enemy_v(map, i, j);
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-
-// void move_enemy_h(t_map *map, int i, int j) {
-//     int next_j = j + map->enemy.curr_direction; 
-
-//     if (next_j >= 0 && next_j < map->col && map->arr_map[i][next_j] != '1') {
-//         map->arr_map[i][next_j] = 'M';
-//         map->arr_map[i][j] = '0';
-//     } else {
-//         map->enemy.curr_direction = -map->enemy.curr_direction;
-//     }
-// }
 void move_enemy_h(t_map *map, int i, int *j, int *curr_direc_h)
 {
     int next_j = *j + *curr_direc_h;
