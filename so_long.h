@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:42:08 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/24 11:54:23 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/02/03 14:29:09 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ typedef struct s_map
 {
 	void *mlx;
 	void *win;
-	t_image *player;
-	t_image *collect;
-	t_image *wall;
-	t_image *empty;
-	t_image *exit;
+	t_image player;
+	t_image collect;
+	t_image wall;
+	t_image empty;
+	t_image exit;
 	int fd;
 	int row;
 	int col;
@@ -76,7 +76,6 @@ void    count_line(t_map *map);
 void	free_tmp(char **tmp, t_map *map);
 void fd_error(t_map *map);
 void hdl_error(t_map *map, int flag);
-void print_map(char **map, int rows, int cols);
 void    ft_display_asst(t_map *map, int i, int j);
 void    display_asset(t_map *map);
 void	display_counter(t_map *map);
@@ -92,6 +91,4 @@ void    event_up(t_map *map, int i, int j);
 void    event_down(t_map *map, int i, int j);
 void    event_right(t_map *map, int i, int j);
 void    event_left(t_map *map, int i, int j);
-// void    move_up(int key, t_map *map);
-// void    validate_and_init_game(char *mymap, t_map map, int i);
 #endif
