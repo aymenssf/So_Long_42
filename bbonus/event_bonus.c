@@ -6,45 +6,53 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:18:33 by aassaf            #+#    #+#             */
-/*   Updated: 2024/01/30 17:35:30 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/02/03 12:44:17 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
+void destroy_player_anim(t_map *map)
+{
+    int i;
+    i = 0;
+    while (i < 35)
+    {
+        if (!map->player.animations[i])
+            mlx_destroy_image(map->mlx, map->player.animations[i]);
+        i++;
+    }
+}
+
+void destroy_collect_anim(t_map *map)
+{
+    int i;
+    i = 0;
+    while (i < 49)
+    {
+        if (!map->collect.animations[i])
+            mlx_destroy_image(map->mlx, map->collect.animations[i]);
+        i++;
+    }
+}
+
 void    destroy_img(t_map *map)
 {
-        mlx_destroy_image(map->mlx, map->player.img);
-        mlx_destroy_image(map->mlx, map->enemy.img);
-        mlx_destroy_image(map->mlx, map->wall.img);
-        mlx_destroy_image(map->mlx, map->exit.img);
-        mlx_destroy_image(map->mlx, map->collect.img);
-        mlx_destroy_image(map->mlx, map->empty.img);
+        destroy_player_anim(map);
+        destroy_collect_anim(map);
+        mlx_destroy_image(map->mlx, map->wall.animations[0]);
+        mlx_destroy_image(map->mlx, map->exit.animations[0]);
+        mlx_destroy_image(map->mlx, map->exit.animations[1]);
+        mlx_destroy_image(map->mlx, map->empty.animations[0]);
+        mlx_destroy_image(map->mlx, map->enemy.animations[0]);
         mlx_loop_end(map->mlx);
         mlx_clear_window(map->mlx, map->win);
         mlx_destroy_window(map->mlx, map->win);
         mlx_destroy_display(map->mlx);
 }
 
-void free_arr_img(t_map *map, void ***arr_img, int *cols_per_row, int rows)
-{
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < cols_per_row[i]; j++)
-        {
-            mlx_destroy_image(map->mlx, arr_img[i][j]);
-        }
-        free(arr_img[i]);
-    }
-    free(arr_img);
-    free(cols_per_row);
-}
-
-
 int     close_map(t_map *map)
 {
-        // int cols_per_row[] = {1, 1, 1, 1, 1, 12};
-        // free_arr_img(map, map->img->arr_img, cols_per_row, 6);
         int     i;
         
         i = 0;
@@ -56,7 +64,7 @@ int     close_map(t_map *map)
         }
         free(map->mlx);
         free(map->arr_map);
-        //ft_free(map);
+        ft_free(map);
         exit (0);
 }
 

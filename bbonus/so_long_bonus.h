@@ -34,10 +34,8 @@
 
 typedef struct s_image
 {
-	void *animations[55];
+	void *animations[50];
 	void	*img;
-	int img_x;
-	int img_y;
 	int count;
 	int count_collected;
 	int curr_direction;
@@ -109,5 +107,8 @@ void move_enemy_h(t_map *map, int i, int *j, int *curr_direc);
 void enemy_patrol(t_map *map, int *curr_direc);
 void collect_sprite(t_map *map, int w, int h);
 void init_collect_sprite_img(t_map *map, int w, int h);
+void	display_move(t_map *map);
+void destroy_collect_anim(t_map *map);
+void destroy_collect_anim(t_map *map);
 
 #endif

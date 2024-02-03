@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 10:43:39 by aassaf            #+#    #+#             */
-/*   Updated: 2024/02/02 18:56:01 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/02/03 20:12:48 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void    ft_display_asst(t_map *map, int i, int j)
                 mlx_put_image_to_window(map->mlx, map->win, map->empty.animations[0], j * 64, i * 64);
         else if (map->arr_map[i][j] == 'P')
         {        
-                mlx_put_image_to_window(map->mlx, map->win, map->player.animations[0], j * 64, i * 64);
+                // mlx_put_image_to_window(map->mlx, map->win, map->player.animations[0], j * 64, i * 64);
                 player_sprite(map, j * 64, i * 64, map->player.curr_direction);
         }
         else if (map->arr_map[i][j] == 'E')
@@ -64,7 +64,29 @@ int    display_asset(t_map *map)
         frame++;
         if (frame == UINT_MAX)
                 frame = 0;
+        display_move(map);
         return(0);
+}
+
+void	display_move(t_map *map)
+{
+	char	*move_count;
+        char    *collect_count;
+        char    *move_returned;
+        char    *collect_returned;
+
+        move_returned = ft_itoa(map->player.count);
+        collect_returned = ft_itoa(map->collect.count_collected);
+	move_count = ft_strjoin("MOVES COUNTER : ", move_returned);
+	collect_count = ft_strjoin("COLLECTED ITEMS : ", collect_returned);
+	mlx_string_put(map->mlx, map->win, 20, 38,
+		0xFFFFFF, move_count);
+	mlx_string_put(map->mlx, map->win, (map->col * 64) - 140, 38,
+		0xFFFFFF, collect_count);
+	free(move_count);
+	free(collect_count);
+        free(move_returned);
+        free(collect_returned);
 }
 
 void	display_counter(t_map *map)
