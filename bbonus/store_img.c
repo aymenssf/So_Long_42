@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 19:21:14 by aassaf            #+#    #+#             */
-/*   Updated: 2024/02/02 14:12:31 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/02/03 12:26:31 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	init_blocks__img(t_map *map, int w, int h)
 {
-	printf("mlx pinter => %p\n",map->mlx);
         map->empty.animations[0] = mlx_xpm_file_to_image(map->mlx, "./animations/ground.xpm", &w, &h);
         map->wall.animations[0] = mlx_xpm_file_to_image(map->mlx, "./animations/wall.xpm", &w, &h);
         map->collect.animations[0] = mlx_xpm_file_to_image(map->mlx, "./animations/collect.xpm", &w, &h);
@@ -62,27 +61,7 @@ void	init_player_sprite_img(t_map *map, int w, int h)
 	map->player.animations[34] = mlx_xpm_file_to_image(map->mlx, "./animations/player/shark35.xpm", &w, &h);
 	map->player.animations[35] = mlx_xpm_file_to_image(map->mlx, "./animations/player/shark36.xpm", &w, &h);
 }
-// void init_collect_sprite_img(t_map *map, int w, int h)
-// {
-//     map->collect.animations[0] = mlx_xpm_file_to_image(map->mlx, "./animations/collectt/collect1.xpm", &w, &h);
-//     map->collect.animations[1] = mlx_xpm_file_to_image(map->mlx, "./animations/collectt/collect2.xpm", &w, &h);
-//     map->collect.animations[2] = mlx_xpm_file_to_image(map->mlx, "./animations/collectt/collect3.xpm", &w, &h);
-//     map->collect.animations[3] = mlx_xpm_file_to_image(map->mlx, "./animations/collectt/collect4.xpm", &w, &h);
-//     map->collect.animations[4] = mlx_xpm_file_to_image(map->mlx, "./animations/collectt/collect5.xpm", &w, &h);
-//     map->collect.animations[5] = mlx_xpm_file_to_image(map->mlx, "./animations/collectt/collect6.xpm", &w, &h);
-//     map->collect.animations[6] = mlx_xpm_file_to_image(map->mlx, "./animations/collectt/collect7.xpm", &w, &h);
-//     map->collect.animations[7] = mlx_xpm_file_to_image(map->mlx, "./animations/collectt/collect8.xpm", &w, &h);
-//     map->collect.animations[8] = mlx_xpm_file_to_image(map->mlx, "./animations/collectt/collect9.xpm", &w, &h);
-// //     map->collect.animations[9] = mlx_xpm_file_to_image(map->mlx, "./animations/collectt/collect10.xpm", &w, &h);
-// //     map->collect.animations[10] = mlx_xpm_file_to_image(map->mlx, "./animations/collectt/collect11.xpm", &w, &h);
-// //     map->collect.animations[11] = mlx_xpm_file_to_image(map->mlx, "./animations/collectt/collect12.xpm", &w, &h);
-// //     map->collect.animations[12] = mlx_xpm_file_to_image(map->mlx, "./animations/collectt/collect13.xpm", &w, &h);
-// //     map->collect.animations[13] = mlx_xpm_file_to_image(map->mlx, "./animations/collectt/collect14.xpm", &w, &h);
-// //     map->collect.animations[14] = mlx_xpm_file_to_image(map->mlx, "./animations/collectt/collect15.xpm", &w, &h);
-// //     map->collect.animations[15] = mlx_xpm_file_to_image(map->mlx, "./animations/collectt/collect16.xpm", &w, &h);
-// //     map->collect.animations[16] = mlx_xpm_file_to_image(map->mlx, "./animations/collectt/collect17.xpm", &w, &h);
-// //     map->collect.animations[17] = mlx_xpm_file_to_image(map->mlx, "./animations/collectt/collect18.xpm", &w, &h);
-// }
+
 void init_collect_sprite_img(t_map *map, int w, int h)
 {
     map->collect.animations[0] = mlx_xpm_file_to_image(map->mlx, "./animations/collectt/collect1.xpm", &w, &h);

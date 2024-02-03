@@ -6,7 +6,7 @@
 /*   By: aassaf <aassaf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 02:41:05 by aassaf            #+#    #+#             */
-/*   Updated: 2024/02/02 18:58:38 by aassaf           ###   ########.fr       */
+/*   Updated: 2024/02/03 12:38:42 by aassaf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void free_tmp(char **tmp, t_map *map)
 }
 void ft_free(t_map *map)
 {
-        (void)map;
+        // (void)map;
         free(map);
 }
 
